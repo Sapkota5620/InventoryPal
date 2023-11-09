@@ -1,14 +1,15 @@
 # Import OpenCV module  
-import cv2  
+import cv2
+import sys
 # Import pyplot from matplotlib as plt  
 from matplotlib import pyplot as pltd  
 # Opening the image from files  
-imaging = cv2.imread('screenshot.jpg')  
+imaging = cv2.imread(cv2.samples.findFile('screenshot.jpg'))  
 # Altering properties of image with cv2  
 imaging_gray = cv2.cvtColor(imaging, cv2.COLOR_BGR2GRAY)  
 imaging_rgb = cv2.cvtColor(imaging, cv2.COLOR_BGR2RGB)  
 # Importing Haar cascade classifier xml data  
-xml_data = cv2.CascadeClassifier('XML-data.xml')  
+xml_data = cv2.CascadeClassifier(cv2.data.haarcascades + 'XML-data.xml')  
 # Detecting object in the image with Haar cascade classifier   
 detecting = xml_data.detectMultiScale(imaging_gray, minSize = (30, 30))
 # Amount of object detected  

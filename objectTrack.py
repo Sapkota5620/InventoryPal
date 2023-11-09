@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
-from matplotlib import pyplot as pltd 
+import sys
 
 # web camera 
 
-image_orig = cv2.imread('screenshot.jpg', -1)
+image_orig = cv2.imread(cv2.samples.findFile('screenshot.jpg'))
 #cv2.imshow("Image Orig", image_orig)
 
 #resizing image
