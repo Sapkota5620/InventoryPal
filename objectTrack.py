@@ -31,11 +31,21 @@ color = cv2.bitwise_and(resized_up, resized_up, mask=mask)
 #edge detection
 img_blur = cv2.GaussianBlur(color, (3,3), 0)
 
+# Laplacian Method
+lap = cv2.Laplacian(resized_up, cv2.CV_64F)
+lap = np.uint8(np.absolute(lap))
+
+# Sobel XY Method
 sobelx = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=5)
 sobely = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=0, dy=1, ksize=5)
-sobelxy = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)
-edges = cv2.Canny(image=img_blur, threshold1=100, threshold2=200)
 
+sobelxy = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)
+sobelC = cv2.bitwise_or(sobelx, sobely)
+
+# Canny edge dector - multistage algo to detect wide range of edge in image
+edges = cv2.Canny(image=lap, threshold1=100, threshold2=200)
+
+# Using matplotlib to display picture
 titles = ['img', 'img_blur', 'resized_up' ]
 imagess = [image_orig, hsv,  resized_up]
 '''
@@ -44,7 +54,7 @@ for i in range(3):
     plt.title(titles[i])
     plt.xticks([]), plt.yticks([])
 '''
-plt.imshow(mask, 'gray')
+plt.imshow(edges, 'gray')
 plt.show()
 
 
