@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import sys
-
+from matplotlib import pyplot as plt
 # web camera 
 
 image_orig = cv2.imread(cv2.samples.findFile('screenshot.jpg'))
@@ -34,19 +34,18 @@ img_blur = cv2.GaussianBlur(color, (3,3), 0)
 sobelx = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=5)
 sobely = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=0, dy=1, ksize=5)
 sobelxy = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)
-
-#Display Sobel Edge Dection Images
-#cv2.imshow("Sobel x", sobelx)
-#cv2.waitKey(0)
-#cv2.imshow("Sobel x", sobely)
-#cv2.waitKey(0)
-#cv2.imshow("Sobel xy", sobelxy)
-#cv2.waitKey(0)
-#cv2.imshow("ReSized Image Orig", color)
-
 edges = cv2.Canny(image=img_blur, threshold1=100, threshold2=200)
-cv2.imshow("Canny Edge Detection", color)
-cv2.waitKey(0)
+
+titles = ['img', 'img_blur', 'resized_up' ]
+imagess = [image_orig, hsv,  resized_up]
+'''
+for i in range(3):
+    plt.subplot(1 , 1, i+1), plt.imshow(imagess[i], 'gray')
+    plt.title(titles[i])
+    plt.xticks([]), plt.yticks([])
+'''
+plt.imshow(mask, 'gray')
+plt.show()
 
 
 

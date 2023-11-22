@@ -5,9 +5,9 @@ import sys
 # web camera 
 
 image_orig = cv2.imread('screenshot.jpg', 0)
-blu = cv2.imread(cv2.samples.findFile('blu.jpg'))
+blu = cv2.imread('blu.jpg')
 
-img = cv2.resize(image_orig, (920, 920), interpolation= cv2.INTER_LINEAR)
+img = cv2.resize(image_orig, (500, 920), interpolation= cv2.INTER_LINEAR)
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
@@ -25,10 +25,6 @@ for i in range(0, nb_components+1):
     # draw the bounding rectangele around each object
     cv2.rectangle(img2, (stats[i][0],stats[i][1]),(stats[i][0]+stats[i][2],stats[i][1]+stats[i][3]), (0,255,0), 2)
     img2[output == i + 1] = color
-
-
-
-
 
 
 
