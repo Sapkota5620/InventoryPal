@@ -2,30 +2,44 @@ import cv2
 import numpy as np
 import sys
 
+def nothing(x):
+    print(x)
+
+cv2.namedWindow("B")
+cv2.createTrackbar("Th1", "B", 0 , 255, nothing)
+cv2.createTrackbar("Th2", "B", 0 , 255, nothing)
+
 # web camera 
+while True:
+    image_orig = cv2.imread('screenshot.jpg')
+    img = cv2.resize(image_orig, (480, 360), interpolation= cv2.INTER_LINEAR)
+    img_copy = img.copy()
 
-image_orig = cv2.imread('screenshot.jpg', 0)
-blu = cv2.imread('blu.jpg')
+    th1 = cv2.getTrackbarPos("Th1", "B")
+    th2 = cv2.getTrackbarPos("Th2", "B")
+    
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    blur = cv2.GaussianBlur(gray, (11, 11), 0)
+    edged = cv2.Canny(blur, th1, th2, 3)
+    dilated = cv2.dilate(edged, (1,1), iterations= 2)
 
-img = cv2.resize(image_orig, (500, 920), interpolation= cv2.INTER_LINEAR)
+    countours, hierarchy = cv2.findContours(dilated.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    #Modify image shape for stacking
+    np.stack((gray,) * 3, axis=-1)
+    np.stack((blur,) * 3, axis=-1)
+    np.stack((edged,) * 3, axis=-1)
+    np.stack((dilated,) * 3, axis=-1)
 
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    images = [gray, blur, edged, dilated]
+    names = ["gray", "blur", "edged", "dilated"]
+    font = cv2.FONT_HERSHEY_SIMPLEX
 
-ret, bw = cv2.threshold(gray, 128, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+    img_stack = np.hstack(images)
 
-# find connected components
-connectivity = 4
-nb_components, output, stats, centroids = cv2.connectedComponentsWithStats(bw, connectivity, cv2.CV_32S) 
-sizes = stats[1:, -1]; nb_components = nb_components - 1
-min_size = 250 #threshhold value for objects in scene
-img2 = np.zeros((img.shape), np.uint8)
-for i in range(0, nb_components+1):
-    # use if sizes[i] >= min_size: to identify your objects
-    color = np.random.randint(255,size=3)
-    # draw the bounding rectangele around each object
-    cv2.rectangle(img2, (stats[i][0],stats[i][1]),(stats[i][0]+stats[i][2],stats[i][1]+stats[i][3]), (0,255,0), 2)
-    img2[output == i + 1] = color
+    cv2.drawContours(img, countours, -1, (0, 255, 0), 2)
 
+    print('countours in the image:', len(countours))
 
-
-
+    cv2.imshow('Input', img_stack)
+    cv2.imshow('Output',img)
+    cv2.waitKey(300)

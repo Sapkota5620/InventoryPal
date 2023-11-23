@@ -21,10 +21,12 @@ resized_up = cv2.resize(image_orig, (920, 920), interpolation= cv2.INTER_LINEAR)
 #cv2.waitKey()
 
 hsv = cv2.cvtColor(resized_up, cv2.COLOR_BGR2HSV)
+hsv1 = cv2.cvtColor(resized_up, cv2.COLOR_BGR2GRAY)
 
 lower = (12, 25, 25)
 upper = (150, 255, 255)
 
+ret, thresh = cv2.threshold(hsv1, 45, 255, 0)
 mask = cv2.inRange(hsv, lower, upper)
 color = cv2.bitwise_and(resized_up, resized_up, mask=mask)
 
@@ -45,6 +47,10 @@ sobelC = cv2.bitwise_or(sobelx, sobely)
 # Canny edge dector - multistage algo to detect wide range of edge in image
 edges = cv2.Canny(image=lap, threshold1=100, threshold2=200)
 
+#countor edge detection
+count, heih = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+count_image = cv2.drawContours(resized_up, count, -1, (0, 255, 0), 3)
+
 # Using matplotlib to display picture
 titles = ['img', 'img_blur', 'resized_up' ]
 imagess = [image_orig, hsv,  resized_up]
@@ -54,7 +60,8 @@ for i in range(3):
     plt.title(titles[i])
     plt.xticks([]), plt.yticks([])
 '''
-plt.imshow(edges, 'gray')
+print(len(count))
+plt.imshow(count_image, 'gray')
 plt.show()
 
 
