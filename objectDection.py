@@ -4,7 +4,7 @@ import sys
 # Import pyplot from matplotlib as plt  
 from matplotlib import pyplot as pltd  
 # Opening the image from files  
-imaging = cv2.imread(cv2.samples.findFile('screenshot.jpg'))  
+imaging = cv2.imread(cv2.samples.findFile('images/screenshot.jpg'))  
 # Altering properties of image with cv2  
 imaging_gray = cv2.cvtColor(imaging, cv2.COLOR_BGR2GRAY)  
 imaging_rgb = cv2.cvtColor(imaging, cv2.COLOR_BGR2RGB)  

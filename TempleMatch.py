@@ -8,10 +8,10 @@ https://docs.opencv.org/3.4/d4/dc6/tutorial_py_template_matching.html
 
 '''
 
-img = cv.imread('screenshot.jpg', cv.IMREAD_GRAYSCALE)
+img = cv.imread('images/screenshot.jpg', cv.IMREAD_GRAYSCALE)
 assert img is not None, "file could not be read, check with os.path.exists()"
 img2 = img.copy()
-template = cv.imread('eagle.jpg', cv.IMREAD_GRAYSCALE)
+template = cv.imread('images/box.png', cv.IMREAD_GRAYSCALE)
 assert template is not None, "file could not be read, check with os.path.exists()"
 w, h = template.shape[::-1]
 # All the 6 methods for comparison in a list
@@ -30,8 +30,8 @@ for meth in methods:
         top_left = max_loc
     bottom_right = (top_left[0] + w, top_left[1] + h)
     cv.rectangle(img,top_left, bottom_right, 255, 2)
-    #plt.subplot(121),plt.imshow(res,cmap = 'gray')
-    #plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
+    plt.subplot(121),plt.imshow(res,cmap = 'gray')
+    plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
     plt.subplot(122),plt.imshow(img,cmap = 'gray')
     plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
     plt.suptitle(meth)
