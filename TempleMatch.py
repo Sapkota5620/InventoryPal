@@ -11,7 +11,7 @@ https://docs.opencv.org/3.4/d4/dc6/tutorial_py_template_matching.html
 img = cv.imread('images/screenshot.jpg', cv.IMREAD_GRAYSCALE)
 assert img is not None, "file could not be read, check with os.path.exists()"
 img2 = img.copy()
-template = cv.imread('images/box.png', cv.IMREAD_GRAYSCALE)
+template = cv.imread('images/eagle.jpg', cv.IMREAD_GRAYSCALE)
 assert template is not None, "file could not be read, check with os.path.exists()"
 w, h = template.shape[::-1]
 # All the 6 methods for comparison in a list
