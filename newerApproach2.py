@@ -6,6 +6,7 @@ import numpy as np
 def nothing(x):
    pass
 
+
 # Morphological function sets
 def morph_operation(matinput):
   kernel =  cv2.getStructuringElement(cv2.MORPH_CROSS,(3,3))
@@ -109,18 +110,28 @@ def main_process():
     cv2.imshow("matlbp",matlbp)
     cv2.waitKey(1)
     
+    canny = cv2.Canny(matlbp, 30, 150)
+    cv2.imshow("c_matlbp", canny)
+    cv2.waitKey(1)
+
+    """"
     bin = binary_inverse(matlbp, 120, 255)
     cv2.imshow("b_i_matlp", bin)
     cv2.waitKey(1)
-
-
+    """
     matmorph = morph_operation(matlbp)
     cv2.imshow("matmorph",matmorph)
     cv2.waitKey(1)
 
+    canny_lbp = lbp_like_method(gray, w*mul, h*mul, (peri/100),off * mul)
+    cv2.imshow("c_lbp", canny_lbp)
+    cv2.waitKey(1)
+
+    """
     bin2 = binary_inverse(matmorph, 120, 255)
     cv2.imshow("b_i_matmorph", bin2)
     cv2.waitKey(1)
+    """
 
     display_color = cv2.cvtColor(gray,cv2.COLOR_GRAY2BGR)
     threshold = cv2.getTrackbarPos("threshold", "B")
