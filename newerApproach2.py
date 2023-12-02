@@ -2,10 +2,44 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
+cropping = False
+x_start, y_start, x_end, y_end = 0, 0, 0, 0
+file = "images/screenshot.jpg"
+image = cv2.imread(file)
+image = cv2.resize(image, (920, 920), interpolation= cv2.INTER_LINEAR) 
+
+oriImage = image.copy()
+
+def mouse_crop(event, x, y, flags, param):
+    # grab references to the global variables
+    global x_start, y_start, x_end, y_end, cropping, oriImage
+    # if the left mouse button was DOWN, start RECORDING
+    # (x, y) coordinates and indicate that cropping is being
+    if event == cv2.EVENT_LBUTTONDOWN:
+        x_start, y_start, x_end, y_end = x, y, x, y
+        cropping = True
+    # Mouse is Moving
+    elif event == cv2.EVENT_MOUSEMOVE:
+        if cropping == True:
+            x_end, y_end = x, y
+    # if the left mouse button was released
+    elif event == cv2.EVENT_LBUTTONUP:
+        # record the ending (x, y) coordinates
+        x_end, y_end = x, y
+        cropping = False # cropping is finished
+        refPoint = [(x_start, y_start), (x_end, y_end)]
+        if len(refPoint) == 2: #when two points were found
+            roi = oriImage[refPoint[0][1]:refPoint[1][1], refPoint[0][0]:refPoint[1][0]]
+            if roi is not None and roi.size > 0:  # Check if roi is not empty
+                cv2.imshow("Cropped", roi)
+                cv2.imwrite("roi.jpg", roi)
+                cv2.destroyAllWindows()
+
+                main_process()
+
 
 def nothing(x):
    pass
-
 
 # Morphological function sets
 def morph_operation(matinput):
@@ -18,7 +52,7 @@ def morph_operation(matinput):
 
   return morph
 
-def analyze_boxes(matblobs, display_frame, size_threshold=200):
+def analyze_boxes(matblobs, display_frame, size_threshold=1200):
     blobs, _ = cv2.findContours(matblobs, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     valid_boxes = []
     wid = display_frame.shape[0]
@@ -42,6 +76,7 @@ def analyze_boxes(matblobs, display_frame, size_threshold=200):
             cv2.rectangle(display_frame, (b_rect[0], b_rect[1]), (b_rect[0] + b_rect[2], b_rect[1] + b_rect[3]), (0, 255, 255), thickness=2)
             size = b_rect[2] * b_rect[3]
             cv2.putText(display_frame, f"{i + 1} : {size}", (b_rect[0], b_rect[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            cv2.putText(display_frame, f"{b_rect[2]} * {b_rect[3]}", (b_rect[0], b_rect[1] + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 255), 2)
             
         cv2.imshow("display_frame_in", display_frame)
 
@@ -77,21 +112,29 @@ def binary_inverse(img, minT=120, maxT=255):
     thresh_gray = 255 - thresh_gray
     return thresh_gray
 
+def boxesCounter(display, valid_boxes):
+    for b_rect in valid_boxes:
+        x, y, w, h = b_rect
+        cv2.rectangle(display, (x, y), (x + w, y + h), (0, 255, 255), -1)
+
+
 def main_process():
-  cv2.namedWindow("B")
+    """ 
+    cv2.namedWindow("B")
 
-  cv2.createTrackbar("w", "B", 1 , 15, nothing)
-  cv2.createTrackbar("h", "B", 1 , 15, nothing)
-  cv2.createTrackbar("peri", "B", 0 , 100, nothing)
-  cv2.createTrackbar("off", "B", 0 , 20, nothing)
-  cv2.createTrackbar("threshold", "B", 200 , 1200, nothing)
-  cv2.createTrackbar("mul", "B", 1 , 5, nothing)
-  cv2.setTrackbarPos("mul", "B", 1)  
-  image_orig = cv2.imread('images/8_ld_edgefield.jpg')
-  img = cv2.resize(image_orig, (920, 920), interpolation= cv2.INTER_LINEAR) 
-  gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    cv2.createTrackbar("w", "B", 1 , 15, nothing)
+    cv2.createTrackbar("h", "B", 1 , 15, nothing)
+    cv2.createTrackbar("peri", "B", 0 , 100, nothing)
+    cv2.createTrackbar("off", "B", 0 , 20, nothing)
+    cv2.createTrackbar("threshold", "B", 200 , 1200, nothing)
+    cv2.createTrackbar("mul", "B", 1 , 5, nothing)
+    cv2.setTrackbarPos("mul", "B", 1)
+    """
+    image_orig = cv2.imread('roi.jpg')
+    #img = cv2.resize(image_orig, (920, 920), interpolation= cv2.INTER_LINEAR) 
+    gray = cv2.cvtColor(image_orig,cv2.COLOR_BGR2GRAY)
 
-  while(True):
+    """"
     # Blured to remove noise 
     blurred = cv2.GaussianBlur(gray,(3,3),-1)
     w = cv2.getTrackbarPos("w", "B") 
@@ -99,54 +142,60 @@ def main_process():
     peri = cv2.getTrackbarPos("peri", "B")
     off = cv2.getTrackbarPos("off", "B")
     mul = cv2.getTrackbarPos("mul", "B")
+    threshold = cv2.getTrackbarPos("threshold", "B")
     """
+
     # Parameter tuning
-    w = 7
-    h = 4
+    w = 2
+    h = 1
     peri = 0.8
-    off = 7
-    """
-    matlbp = lbp_like_method(gray, w*mul, h*mul, (peri/100),off * mul)
-    cv2.imshow("matlbp",matlbp)
-    cv2.waitKey(1)
+    off = 8
+    mul = 2
+    threshold = 1400
+
+    matlbp = lbp_like_method(gray, w*mul, h*mul, (peri/100), off * mul)
+    cv2.imshow("matlbp", matlbp)
+    cv2.waitKey(0)
     
-    canny = cv2.Canny(matlbp, 30, 150)
-    cv2.imshow("c_matlbp", canny)
-    cv2.waitKey(1)
-
-    """"
-    bin = binary_inverse(matlbp, 120, 255)
-    cv2.imshow("b_i_matlp", bin)
-    cv2.waitKey(1)
-    """
+    canny = cv2.Canny(matlbp, 160, 255)
     matmorph = morph_operation(matlbp)
-    cv2.imshow("matmorph",matmorph)
-    cv2.waitKey(1)
 
-    canny_lbp = lbp_like_method(gray, w*mul, h*mul, (peri/100),off * mul)
-    cv2.imshow("c_lbp", canny_lbp)
-    cv2.waitKey(1)
-
-    """
-    bin2 = binary_inverse(matmorph, 120, 255)
-    cv2.imshow("b_i_matmorph", bin2)
-    cv2.waitKey(1)
-    """
+    canny_lbp = lbp_like_method(gray, w*mul, h*mul, (peri/100), off * mul)
+    #bin = binary_inverse(matlbp, 120, 255)
+    #bin2 = binary_inverse(matmorph, 120, 255)
 
     display_color = cv2.cvtColor(gray,cv2.COLOR_GRAY2BGR)
-    threshold = cv2.getTrackbarPos("threshold", "B")
-
     valid_boxes = analyze_boxes(matmorph, display_color, size_threshold=threshold*mul) 
+    boxesCounter(display_color, valid_boxes)
 
-
+    """ 
     for b_rect in valid_boxes:
         x, y, w, h = b_rect
         cv2.rectangle(display_color, (x, y), (x + w, y + h), (0, 255, 255), -1)
+    """
 
+    titles = ['matlbp', 'canny', 'matmorph', 'canny_lbp','display_color']
+    imagess = [matlbp, canny, matmorph, canny_lbp, display_color]
 
-    cv2.imshow("display_color",display_color)
-    cv2.waitKey(10)
-  
+    for i in range(5):
+        plt.subplot(2 , 3, i+1), plt.imshow(imagess[i], 'gray')
+        plt.title(titles[i])
+        plt.xticks([]), plt.yticks([])
+
+    plt.show()
 
 if __name__ == '__main__':
-  main_process()
+    cv2.namedWindow("image")
+    cv2.setMouseCallback("image", mouse_crop)
+
+    while True:
+        i = image.copy()
+        if not cropping:
+            cv2.imshow("image", image)
+        elif cropping:
+            cv2.rectangle(i, (x_start, y_start), (x_end, y_end), (255, 0, 0), 2)
+            cv2.imshow("image", i)
+        key = cv2.waitKey(1)
+        if key == 27:  # 27 is the ASCII code for the Escape key
+            break
+    cv2.destroyAllWindows()
