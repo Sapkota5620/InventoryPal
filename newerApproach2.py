@@ -67,7 +67,7 @@ def analyze_boxes(matblobs, display_frame, size_threshold=1200):
         # Check if the area of the bounding rectangle is above the size threshold
         if (rw * rh > size_threshold) and ( rw * rh < int(wid/3 * hei/3)):
             valid_boxes.append(b_rect)
-
+    
     if valid_boxes:
         print("Number of Large Boxes: ", len(valid_boxes))
 

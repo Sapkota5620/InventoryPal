@@ -23,13 +23,19 @@ for meth in methods:
     # Apply template Matching
     res = cv.matchTemplate(img,template,method)
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
+    img = cv.cvtColor(img, cv.COLOR_GRAY2BGR)
     # If the method is TM_SQDIFF or TM_SQDIFF_NORMED, take minimum
     if method in [cv.TM_SQDIFF, cv.TM_SQDIFF_NORMED]:
-        top_left = min_loc
+        loc = np.where(res <= min_val + 0.05)  # Threshold for SQDIFF methods
     else:
-        top_left = max_loc
-    bottom_right = (top_left[0] + w, top_left[1] + h)
-    cv.rectangle(img,top_left, bottom_right, 255, 2)
+        loc = np.where(res >= max_val - 0.05)  # Threshold for other methods
+    for pt in zip(*loc[::-1]):
+        bottom_right = (pt[0] + w, pt[1] + h)
+        cv.rectangle(img, pt, bottom_right, (0,255,0), 2)
+
+    result_filename = f'result_{meth}.png'
+    cv.imwrite(result_filename, img)
+
     plt.subplot(121),plt.imshow(res,cmap = 'gray')
     plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
     plt.subplot(122),plt.imshow(img,cmap = 'gray')

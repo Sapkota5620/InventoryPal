@@ -19,7 +19,6 @@ show = cv2.dilate(img, kernel2, iterations=1)
 opening = cv2.morphologyEx(show, cv2.MORPH_OPEN, kernel1)
 canny = cv2.Canny(opening, 30, 120)
 
-
 lines = cv2.HoughLinesP(canny, 1, np.pi / 200, 90, minLineLength=20, maxLineGap=10)
 for line in range(0, len(lines)):
     x1, y1, x2, y2 = lines[line][0]

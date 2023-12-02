@@ -13,11 +13,9 @@ def get_edge(images):
 img_rgb = cv.imread('roi.jpg')
 assert img_rgb is not None, "file could not be read, check with os.path.exists()"
 img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
-template = cv.imread('images/blu.jpg', cv.IMREAD_GRAYSCALE)
+template = cv.imread('images/eagle.jpg', cv.IMREAD_GRAYSCALE)
 assert template is not None, "file could not be read, check with os.path.exists()"
 w, h = template.shape[::-1]
-template = cv.resize(template, (100, 80), interpolation= cv.INTER_LINEAR)
-
 res = cv.matchTemplate(img_gray,template,cv.TM_SQDIFF_NORMED)
 
 min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
