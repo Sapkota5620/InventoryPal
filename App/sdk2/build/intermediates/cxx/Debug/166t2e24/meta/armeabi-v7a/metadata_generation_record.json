@@ -1,0 +1,184 @@
+[
+  {
+    "level_": 0,
+    "message_": "Start JSON generation. Platform version: 21 min SDK version: armeabi-v7a",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -432842964
+  },
+  {
+    "level_": 0,
+    "message_": "rebuilding JSON C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\\android_gradle_build.json due to:",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1835691595
+  },
+  {
+    "level_": 0,
+    "message_": "- expected json C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\\android_gradle_build.json file is not present, will remove stale json folder",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 1861321427
+  },
+  {
+    "level_": 0,
+    "message_": "- missing previous command file C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\\metadata_generation_command.txt, will remove stale json folder",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -889528975
+  },
+  {
+    "level_": 0,
+    "message_": "- command changed from previous, will remove stale json folder",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1562961764
+  },
+  {
+    "level_": 0,
+    "message_": "removing stale contents from \u0027C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\u0027",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -150574245
+  },
+  {
+    "level_": 0,
+    "message_": "created folder \u0027C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\u0027",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1635343257
+  },
+  {
+    "level_": 0,
+    "message_": "executing cmake Executable : C:\\Users\\User\\AppData\\Local\\Android\\Sdk\\cmake\\3.18.1\\bin\\cmake.exe\narguments : \n-HC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\n-DCMAKE_SYSTEM_NAME\u003dAndroid\n-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\n-DCMAKE_SYSTEM_VERSION\u003d21\n-DANDROID_PLATFORM\u003dandroid-21\n-DANDROID_ABI\u003darmeabi-v7a\n-DCMAKE_ANDROID_ARCH_ABI\u003darmeabi-v7a\n-DANDROID_NDK\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\n-DCMAKE_ANDROID_NDK\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\n-DCMAKE_TOOLCHAIN_FILE\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\build\\cmake\\android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\cmake\\3.18.1\\bin\\ninja.exe\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\build\\intermediates\\cxx\\Debug\\166t2e24\\obj\\armeabi-v7a\n-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\build\\intermediates\\cxx\\Debug\\166t2e24\\obj\\armeabi-v7a\n-DCMAKE_BUILD_TYPE\u003dDebug\n-BC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\n-GNinja\n-DANDROID_STL\u003dc++_shared\njvmArgs : \n\n",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 1333642079
+  },
+  {
+    "level_": 0,
+    "message_": "Executable : C:\\Users\\User\\AppData\\Local\\Android\\Sdk\\cmake\\3.18.1\\bin\\cmake.exe\narguments : \n-HC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\n-DCMAKE_SYSTEM_NAME\u003dAndroid\n-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\n-DCMAKE_SYSTEM_VERSION\u003d21\n-DANDROID_PLATFORM\u003dandroid-21\n-DANDROID_ABI\u003darmeabi-v7a\n-DCMAKE_ANDROID_ARCH_ABI\u003darmeabi-v7a\n-DANDROID_NDK\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\n-DCMAKE_ANDROID_NDK\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\n-DCMAKE_TOOLCHAIN_FILE\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\build\\cmake\\android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003dC:\\Users\\User\\AppData\\Local\\Android\\Sdk\\cmake\\3.18.1\\bin\\ninja.exe\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\build\\intermediates\\cxx\\Debug\\166t2e24\\obj\\armeabi-v7a\n-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\build\\intermediates\\cxx\\Debug\\166t2e24\\obj\\armeabi-v7a\n-DCMAKE_BUILD_TYPE\u003dDebug\n-BC:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\n-GNinja\n-DANDROID_STL\u003dc++_shared\njvmArgs : \n\n",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 439734272
+  },
+  {
+    "level_": 0,
+    "message_": "Exiting generation of C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\\compile_commands.json.bin normally",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1124051971
+  },
+  {
+    "level_": 0,
+    "message_": "done executing cmake",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": -1875308015
+  },
+  {
+    "level_": 0,
+    "message_": "write command file C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\.cxx\\Debug\\166t2e24\\armeabi-v7a\\metadata_generation_command.txt",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 761341609
+  },
+  {
+    "level_": 0,
+    "message_": "JSON generation completed without problems",
+    "file_": "C:\\Users\\User\\SchoolCS\\CS499\\Inventory_Pal\\App\\sdk2\\libcxx_helper\\CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {},
+      "fieldsDescending": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 62765069
+  }
+]
