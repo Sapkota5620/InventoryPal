@@ -26,8 +26,8 @@ if max_val >= threshold:
     ned_w = w
     top_l = max_loc
     bot_r = (top_l[0] + ned_w, top_l[1] + ned_h)
-    cv.rectangle(img_gray, top_l, bot_r, (0,255,255), 2, lineType=cv.LINE_4)
-
+    cv.rectangle(img_gray, top_l, bot_r, (0,255,0), 2, lineType=cv.LINE_4)
+    img_gray = cv.cvtColor(img_gray, cv.COLOR_GRAY2BGR)
     cv.imshow("result", img_gray)
     cv.waitKey()
 else:
