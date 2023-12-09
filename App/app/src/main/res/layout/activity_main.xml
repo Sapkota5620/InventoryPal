@@ -4,14 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:gravity="center">
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="376dp"
+        android:layout_height="344dp"
+        android:layout_marginTop="20dp"
+        android:background="#000" />
 
     <Button
+        android:id="@+id/select"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:id="@+id/camera_button"
-        android:text="Object"
-    />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="200dp"
+        android:text="select" />
+
+    <Button
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:baselineAligned="false"
+        android:text="Camera"
+        android:transformPivotX="10dp" />
 
 </LinearLayout>

@@ -3,7 +3,7 @@
 3    package="org.opencv" >
 4
 5    <uses-sdk
-6        android:minSdkVersion="30"
+6        android:minSdkVersion="24"
 6-->C:\Users\User\SchoolCS\CS499\Inventory_Pal\App\sdk2\java\AndroidManifest.xml
 7        android:targetSdkVersion="34" />
 7-->C:\Users\User\SchoolCS\CS499\Inventory_Pal\App\sdk2\java\AndroidManifest.xml

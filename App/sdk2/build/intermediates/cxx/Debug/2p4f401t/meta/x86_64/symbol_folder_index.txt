@@ -1,0 +1,1 @@
+C:\Users\User\SchoolCS\CS499\Inventory_Pal\App\sdk2\build\intermediates\cxx\Debug\2p4f401t\obj\x86_64
